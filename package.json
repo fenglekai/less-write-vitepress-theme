@@ -1,0 +1,55 @@
+{
+  "name": "less-write-vitepress-theme",
+  "version": "1.0.0",
+  "description": "Vitepress custom theme",
+  "main": "index.js",
+  "scripts": {
+    "build": "gulp --preload @esbuild-kit/cjs-loader -f build/gulpfile.ts",
+    "clean": "rimraf dist",
+    "postinstall": "tsx build/gen-version.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "keywords": [
+    "Vitepress",
+    "Theme"
+  ],
+  "author": "fenglekai",
+  "license": "MIT",
+  "peerDependencies": {
+    "vue": "^3.5.12"
+  },
+  "dependencies": {
+    "@vueuse/core": "^11.1.0",
+    "fast-glob": "^3.3.2",
+    "markdown-it": "^14.1.0",
+    "markdown-it-container": "^4.0.0"
+  },
+  "devDependencies": {
+    "@esbuild-kit/cjs-loader": "^2.4.4",
+    "@pnpm/types": "^12.2.0",
+    "@rollup/plugin-commonjs": "^28.0.1",
+    "@rollup/plugin-node-resolve": "^15.3.0",
+    "@types/gulp": "^4.0.17",
+    "@types/markdown-it": "^14.1.2",
+    "@types/markdown-it-container": "^2.0.10",
+    "@types/node": "^22.7.5",
+    "@vitejs/plugin-vue": "^5.1.4",
+    "@vue/runtime-core": "^3.5.12",
+    "chalk": "^5.3.0",
+    "gulp": "^5.0.0",
+    "less": "^4.2.0",
+    "rimraf": "^6.0.1",
+    "rollup": "^4.24.0",
+    "rollup-plugin-esbuild": "^6.1.1",
+    "rollup-plugin-styles": "^4.0.0",
+    "ts-node": "^10.9.2",
+    "tsx": "^4.19.1",
+    "typescript": "^5.6.3",
+    "unplugin-vue-macros": "^2.13.0",
+    "vitepress": "^1.4.1",
+    "vue": "^3.5.12"
+  }
+}
