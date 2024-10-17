@@ -1,6 +1,7 @@
 import { writeFile } from "fs/promises";
 import path from "path";
 import pkg from "../package.json"; // need to be checked
+import { buildRoot } from "./constants";
 
 function getVersion() {
   const tagVer = process.env.TAG_VERSION;
@@ -12,8 +13,6 @@ function getVersion() {
 }
 
 const version = getVersion();
-const projRoot = path.resolve(__dirname, "..");
-const buildRoot = path.resolve(projRoot, "build");
 
 async function main() {
   console.info(`Version: ${version}`);

@@ -19,6 +19,6 @@
     "composite": true,
     "skipLibCheck": true
   },
-  "include": ["src/*", "index.ts", "build/*"],
+  "include": ["src/**/*", "build/*", "package.json"],
   "exclude": ["node_modules"]
 }

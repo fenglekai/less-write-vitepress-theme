@@ -3,10 +3,10 @@ import { fileURLToPath, URL } from "node:url";
 import { mdPlugin, MarkdownTransform } from "./plugins";
 
 // https://vitepress.dev/reference/site-config
-export default (docRoot:string) => {
+export default (docRoot: string) => {
   return defineConfig({
     markdown: {
-      config: (md) => mdPlugin(md,docRoot),
+      config: (md) => mdPlugin(md, docRoot),
     },
     vite: {
       // resolve: {
@@ -21,5 +21,5 @@ export default (docRoot:string) => {
       // },
       plugins: [MarkdownTransform(docRoot)],
     },
-  })
+  });
 };

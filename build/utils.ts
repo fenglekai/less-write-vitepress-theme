@@ -3,6 +3,7 @@ import chalk from "chalk";
 import { resolve } from "path";
 import type { OutputOptions, RollupBuild } from "rollup";
 import type { ProjectManifest } from "@pnpm/types";
+import { TaskFunction } from "gulp";
 
 const projRoot = resolve("..");
 
@@ -18,7 +19,7 @@ export function formatBundleFilename(
   return `${name}${minify ? ".min" : ""}.${ext}`;
 }
 
-export const withTaskName = (name: string, fn: any) =>
+export const withTaskName = (name: string, fn: TaskFunction): TaskFunction =>
   Object.assign(fn, { displayName: name });
 
 export const run = async (command: string, cwd = projRoot) =>
@@ -77,4 +78,13 @@ export const generateExternal = async (options: { full: boolean }) => {
       (pkg) => id === pkg || id.startsWith(`${pkg}/`)
     );
   };
+};
+
+export const excludeFiles = (files: string[]) => {
+  const excludes = [
+    "node_modules",
+  ];
+  return files.filter(
+    (path) => !excludes.some((exclude) => path.includes(exclude))
+  );
 };
