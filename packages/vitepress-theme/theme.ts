@@ -2,6 +2,7 @@ import type { Theme } from "vitepress";
 import { watch } from "vue";
 import Layout from "./Layout.vue";
 import RainbowAnimationSwitcher from './components/RainbowAnimationSwitcher.vue'
+import RainbowAnimationSwitcherOnNav from './components/RainbowAnimationSwitcherOnNav.vue'
 import VPDemo from './components/VPDemo.vue'
 import VPApiTyping from './components/VPApiTyping.vue'
 import './styles/base.css'
@@ -12,6 +13,7 @@ export default {
   Layout,
   enhanceApp({ app, router }) {
     app.component('RainbowAnimationSwitcher', RainbowAnimationSwitcher)
+    app.component('RainbowAnimationSwitcherOnNav', RainbowAnimationSwitcherOnNav)
     app.component('Demo', VPDemo)
     app.component('ApiTyping', VPApiTyping)
     if (typeof window === 'undefined')

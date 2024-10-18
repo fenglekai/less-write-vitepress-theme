@@ -27,10 +27,6 @@ export default defineConfig({
       //     },
       //   ],
       // },
-      // {
-      //   text: `Rainbow Animation`,
-      //   component: 'RainbowAnimationSwitcher'
-      // }
     ],
 
     sidebar: [
