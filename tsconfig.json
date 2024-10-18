@@ -17,8 +17,8 @@
     "rootDir": ".",
     "types": ["unplugin-vue-macros/macros-global", "node"],
     "composite": true,
-    "skipLibCheck": true
+    "skipLibCheck": true,
   },
-  "include": ["src/**/*", "build/*", "package.json"],
+  "include": ["packages/vitepress-theme/**/*", "build/*", "package.json"],
   "exclude": ["node_modules"]
 }

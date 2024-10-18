@@ -4,6 +4,7 @@ import { resolve } from "path";
 import type { OutputOptions, RollupBuild } from "rollup";
 import type { ProjectManifest } from "@pnpm/types";
 import { TaskFunction } from "gulp";
+import consola from "consola";
 
 const projRoot = resolve("..");
 
@@ -25,7 +26,7 @@ export const withTaskName = (name: string, fn: TaskFunction): TaskFunction =>
 export const run = async (command: string, cwd = projRoot) =>
   new Promise((resolve, reject) => {
     const [cmd, ...args] = command.split(" ");
-    console.info(`run: ${chalk.green(`${cmd} ${args.join(" ")}`)}`);
+    consola.info(`run: ${chalk.green(`${cmd} ${args.join(" ")}`)}`);
     const app = spawn(cmd, args, {
       cwd,
       stdio: "inherit",

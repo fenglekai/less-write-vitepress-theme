@@ -1,12 +1,12 @@
 import path from "path";
-import { parallel, type TaskFunction } from "gulp";
-import { Plugin, rollup } from "rollup";
+import { parallel, TaskFunction } from "gulp";
+import { rollup } from "rollup";
 import commonjs from "@rollup/plugin-commonjs";
 import esbuild from "rollup-plugin-esbuild";
 import VueMacros from "unplugin-vue-macros/rollup";
 import vue from "@vitejs/plugin-vue";
 import { nodeResolve } from "@rollup/plugin-node-resolve";
-import css from "rollup-plugin-css-only";
+import postcss from "rollup-plugin-postcss";
 import nodePolyfills from "rollup-plugin-polyfill-node";
 import { glob } from "fast-glob";
 import {
@@ -22,9 +22,8 @@ import { buildOutput, projRoot } from "./constants.js";
 const target = "esnext";
 const banner = `#!/usr/bin/env node\n/*! Less Write Changelog v${version} */\n`;
 
-const cssConfigEntries = {
-  config: {output: 'bundle.css'},
-}
+const moduleRoot = path.resolve(projRoot, "packages", "vitepress-theme");
+const fullRoot = path.resolve(moduleRoot, "index.ts");
 
 async function buildFullEntry() {
   const plugins = [
@@ -37,13 +36,12 @@ async function buildFullEntry() {
         }),
       },
     }),
-    css(cssConfigEntries.config) as Plugin,
     nodePolyfills(),
     commonjs(),
+    postcss({ plugins: [] }),
     nodeResolve({ extensions: [".mjs", ".js", ".json", ".ts"] }),
     esbuild({
       exclude: [],
-      sourceMap: false,
       target,
       treeShaking: true,
       legalComments: "eof",
@@ -57,7 +55,7 @@ async function buildFullEntry() {
   ];
 
   const bundle = await rollup({
-    input: path.resolve(projRoot, "src", "index.ts"),
+    input: fullRoot,
     plugins,
     treeshake: true,
     external: await generateExternal({ full: true }),
@@ -92,7 +90,6 @@ async function buildFullEntry() {
 }
 
 const buildModules = async () => {
-  const moduleRoot = path.resolve(projRoot, "src")
   const input = excludeFiles(
     await glob("**/*.{js,ts,vue,css}", {
       cwd: moduleRoot,
@@ -112,14 +109,13 @@ const buildModules = async () => {
           }),
         },
       }),
-      css(cssConfigEntries.config) as Plugin,
+      postcss({ plugins: [] }),
       nodePolyfills(),
       nodeResolve({
-        extensions: ['.mjs', '.js', '.json', '.ts']
+        extensions: [".mjs", ".js", ".json", ".ts"],
       }),
       commonjs(),
       esbuild({
-        sourceMap: true,
         target,
         loaders: {
           ".vue": "ts",
@@ -129,26 +125,23 @@ const buildModules = async () => {
     external: await generateExternal({ full: false }),
     treeshake: false,
   });
-  await writeBundles(
-    bundle,
-    [
-      {
-        format: 'esm',
-        dir: path.resolve(buildOutput, 'es'),
-        preserveModules: true,
-        preserveModulesRoot: moduleRoot,
-        entryFileNames: `[name].mjs`,
-      },
-      {
-        format: 'cjs',
-        dir: path.resolve(buildOutput, 'lib'),
-        exports: "named" ,
-        preserveModules: true,
-        preserveModulesRoot: moduleRoot,
-        entryFileNames: `[name].js`,
-      } 
-    ]
-  );
+  await writeBundles(bundle, [
+    {
+      format: "esm",
+      dir: path.resolve(buildOutput, "es"),
+      preserveModules: true,
+      preserveModulesRoot: moduleRoot,
+      entryFileNames: `[name].mjs`,
+    },
+    {
+      format: "cjs",
+      dir: path.resolve(buildOutput, "lib"),
+      exports: "named",
+      preserveModules: true,
+      preserveModulesRoot: moduleRoot,
+      entryFileNames: `[name].js`,
+    },
+  ]);
 };
 
 const buildFullBundle: TaskFunction = parallel(

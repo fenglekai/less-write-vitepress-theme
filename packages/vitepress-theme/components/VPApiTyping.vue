@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import Warning from './icons/VPIconWarning.vue'
+// import Warning from './icons/VPIconWarning.vue'
 
 defineProps({
   type: String,

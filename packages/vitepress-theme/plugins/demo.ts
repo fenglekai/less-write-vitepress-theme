@@ -2,18 +2,24 @@ import path from "path";
 import fs from "fs";
 import type { Plugin } from "vitepress";
 import glob from "fast-glob";
-
+import consola from "consola";
 
 type Append = Record<"headers" | "footers" | "scriptSetups", string[]>;
 let compPaths: string[];
 export function MarkdownTransform(docRoot: string): Plugin {
+  const componentRoot = path.resolve(docRoot, "component");
+  if (!fs.existsSync(componentRoot)) {
+    consola.warn("[less-write-md-transform] component path not found");
+    return { name: "less-write-md-transform" };
+  }
+
   return {
     name: "less-write-md-transform",
 
     enforce: "pre",
 
     async buildStart() {
-      const pattern = fs.readdirSync(path.resolve(docRoot, "component"));
+      const pattern = fs.readdirSync(componentRoot);
 
       compPaths = await glob(pattern, {
         cwd: docRoot,

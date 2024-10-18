@@ -1,5 +1,6 @@
 import { writeFile } from "fs/promises";
 import path from "path";
+import consola from 'consola';
 import pkg from "../package.json"; // need to be checked
 import { buildRoot } from "./constants";
 
@@ -15,7 +16,7 @@ function getVersion() {
 const version = getVersion();
 
 async function main() {
-  console.info(`Version: ${version}`);
+  consola.info(`Version: ${version}`);
   await writeFile(
     path.resolve(buildRoot, 'version.ts'),
     `export const version = '${version}'\n`
