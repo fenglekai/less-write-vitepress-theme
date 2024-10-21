@@ -1,7 +1,7 @@
 import { UserConfig } from "vitepress";
 import { mdPlugin, MarkdownTransform } from "./plugins";
-import path from "node:path";
-import { fileURLToPath } from "node:url";
+import path from "path";
+import { fileURLToPath } from "url";
 
 export type Config = { docRoot?: string; rainbowAnimation?: boolean };
 

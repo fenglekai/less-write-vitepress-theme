@@ -1,5 +1,8 @@
 import { defineConfig } from "vitepress";
-import Config from "../../packages/vitepress-theme/config";
+// dev
+// import Config from "../../packages/vitepress-theme/config";
+// preview
+import Config from '../../dist/es/config.mjs'
 import path from "node:path";
 
 const projRoot = path.resolve(__dirname, "..", "..");

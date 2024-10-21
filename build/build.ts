@@ -1,5 +1,5 @@
 import path from "path";
-import { parallel, TaskFunction } from "gulp";
+import { dest, parallel, series, src, TaskFunction } from "gulp";
 import { rollup } from "rollup";
 import commonjs from "@rollup/plugin-commonjs";
 import esbuild from "rollup-plugin-esbuild";
@@ -7,7 +7,8 @@ import VueMacros from "unplugin-vue-macros/rollup";
 import vue from "@vitejs/plugin-vue";
 import { nodeResolve } from "@rollup/plugin-node-resolve";
 import postcss from "rollup-plugin-postcss";
-import nodePolyfills from "rollup-plugin-polyfill-node";
+import gulpPostcss from "gulp-postcss";
+import cssnano from "cssnano";
 import { glob } from "fast-glob";
 import {
   writeBundles,
@@ -36,9 +37,8 @@ async function buildFullEntry() {
         }),
       },
     }),
-    nodePolyfills(),
     commonjs(),
-    postcss({ plugins: [] }),
+    postcss(),
     nodeResolve({ extensions: [".mjs", ".js", ".json", ".ts"] }),
     esbuild({
       exclude: [],
@@ -91,7 +91,7 @@ async function buildFullEntry() {
 
 const buildModules = async () => {
   const input = excludeFiles(
-    await glob("**/*.{js,ts,vue,css}", {
+    await glob("**/*.{js,ts,vue}", {
       cwd: moduleRoot,
       absolute: true,
       onlyFiles: true,
@@ -100,6 +100,17 @@ const buildModules = async () => {
   const bundle = await rollup({
     input,
     plugins: [
+      {
+        name: "less-write-alias-plugin",
+        resolveId(id) {
+          const sourceThemeChalk = `./styles`;
+          if (!id.startsWith(sourceThemeChalk)) return;
+          return {
+            id: id,
+            external: "absolute",
+          };
+        },
+      },
       VueMacros({
         setupComponent: false,
         setupSFC: false,
@@ -109,11 +120,10 @@ const buildModules = async () => {
           }),
         },
       }),
-      postcss({ plugins: [] }),
-      nodePolyfills(),
       nodeResolve({
         extensions: [".mjs", ".js", ".json", ".ts"],
       }),
+      postcss(),
       commonjs(),
       esbuild({
         target,
@@ -133,20 +143,37 @@ const buildModules = async () => {
       preserveModulesRoot: moduleRoot,
       entryFileNames: `[name].mjs`,
     },
-    {
-      format: "cjs",
-      dir: path.resolve(buildOutput, "lib"),
-      exports: "named",
-      preserveModules: true,
-      preserveModulesRoot: moduleRoot,
-      entryFileNames: `[name].js`,
-    },
+    // {
+    //   format: "cjs",
+    //   dir: path.resolve(buildOutput, "lib"),
+    //   exports: "named",
+    //   preserveModules: true,
+    //   preserveModulesRoot: moduleRoot,
+    //   entryFileNames: `[name].js`,
+    //   assetFileNames: `styles`,
+    // },
   ]);
 };
 
-const buildFullBundle: TaskFunction = parallel(
-  withTaskName("buildFull", buildFullEntry),
-  withTaskName("buildModules", buildModules)
+const buildStyles = () => {
+  return src(path.resolve(moduleRoot, "styles/*.css"))
+    .pipe(gulpPostcss([cssnano()]))
+    .pipe(dest(path.resolve(buildOutput, "styles")));
+};
+
+const copyBuildStylesFile = () => {
+  return src(path.resolve(buildOutput, "styles/*"))
+    .pipe(dest(path.resolve(buildOutput, "es", "styles")))
+    .pipe(dest(path.resolve(buildOutput, "lib", "styles")));
+};
+
+const buildFullBundle: TaskFunction = series(
+  parallel(
+    // withTaskName("buildFull", buildFullEntry),
+    withTaskName("buildStyles", buildStyles),
+    withTaskName("buildModules", buildModules)
+  ),
+  withTaskName("buildModules", copyBuildStylesFile)
 );
 
 export default buildFullBundle;

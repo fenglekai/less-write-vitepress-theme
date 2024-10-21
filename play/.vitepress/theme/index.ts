@@ -1,6 +1,9 @@
 // https://vitepress.dev/guide/custom-theme
 import type { Theme } from "vitepress";
-import CustomTheme from "../../../packages/vitepress-theme/theme";
+// dev
+// import CustomTheme from "../../../packages/vitepress-theme/theme";
+// preview
+import CustomTheme from "../../../dist/es/theme.mjs";
 
 export default {
   extends: CustomTheme,

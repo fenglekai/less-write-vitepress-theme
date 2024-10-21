@@ -82,9 +82,7 @@ export const generateExternal = async (options: { full: boolean }) => {
 };
 
 export const excludeFiles = (files: string[]) => {
-  const excludes = [
-    "node_modules",
-  ];
+  const excludes = ["node_modules"];
   return files.filter(
     (path) => !excludes.some((exclude) => path.includes(exclude))
   );
