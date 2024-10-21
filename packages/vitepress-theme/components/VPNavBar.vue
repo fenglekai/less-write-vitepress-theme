@@ -243,6 +243,8 @@ watchPostEffect(() => {
 }
 
 .menu + .appearance::before,
+.menu + .rainbow-animation::before,
+.rainbow-animation + .appearance::before,
 .translations + .appearance::before {
   margin-right: 16px;
 }

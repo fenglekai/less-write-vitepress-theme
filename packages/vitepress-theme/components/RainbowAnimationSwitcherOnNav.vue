@@ -63,53 +63,6 @@ const switchTitle = computed(() => {
     align-items: center;
   }
 }
-.group {
-  padding-top: 10px;
-  margin-top: 1rem !important;
-}
-
-.group.mobile {
-  border: none !important;
-  margin-top: 24px;
-}
-
-.group.mobile .NavScreenRainbowAnimation {
-  background-color: var(--vp-c-bg-soft);
-}
-
-.group.mobile .NavScreenRainbowAnimation::before {
-  margin-top: 16px;
-  background-color: var(--vp-c-bg);
-}
-
-@media (min-width: 960px) {
-  .group:not(.mobile) {
-    margin-top: 10px !important;
-    margin-bottom: -10px;
-    padding-top: 0;
-    width: 220px;
-  }
-}
-
-.NavScreenRainbowAnimation {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border-radius: 8px;
-  /* padding: 12px 12px 12px 12px; */
-  background-color: var(--vp-c-bg-elv);
-  max-width: 220px;
-}
-.group.mobile .NavScreenRainbowAnimation {
-  max-width: unset;
-}
-
-.text {
-  line-height: 24px;
-  font-size: 12px;
-  font-weight: 500;
-  color: var(--vp-c-text-2);
-}
 
 .animated {
   opacity: 0;

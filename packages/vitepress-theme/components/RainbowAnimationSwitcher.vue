@@ -45,7 +45,7 @@ const switchTitle = computed(() => {
         </p>
         <RainbowSwitcher
           :title="switchTitle"
-          class="RainbowAnimationSwitcher"
+          class="RainbowSwitcher"
           :aria-checked="animated ? 'true' : 'false'"
           @click="toggleRainbow"
         >
@@ -58,8 +58,6 @@ const switchTitle = computed(() => {
 
 <style scoped>
 .group {
-  /* border-top: 1px solid var(--vp-c-divider); */
-  /* padding-top: 10px; */
   margin-top: 1rem !important;
 }
 
@@ -89,10 +87,8 @@ const switchTitle = computed(() => {
   }
 }
 
-@media (min-width: 960px) {
+@media (min-width: 768px) {
   .group:not(.mobile) {
-    /* margin-top: 10px !important; */
-    /* margin-bottom: -10px; */
     padding-top: 0;
     width: 220px;
   }
@@ -125,15 +121,15 @@ const switchTitle = computed(() => {
   opacity: 0;
 }
 
-.RainbowAnimationSwitcher[aria-checked="false"] .non-animated {
+.RainbowSwitcher[aria-checked="false"] .non-animated {
   opacity: 1;
 }
 
-.RainbowAnimationSwitcher[aria-checked="true"] .animated {
+.RainbowSwitcher[aria-checked="true"] .animated {
   opacity: 1;
 }
 
-.RainbowAnimationSwitcher[aria-checked="false"] :deep(.check) {
+.RainbowSwitcher[aria-checked="false"] :deep(.check) {
   /*rtl:ignore*/
   transform: translateX(18px);
 }
