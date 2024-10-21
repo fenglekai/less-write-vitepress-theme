@@ -16,17 +16,20 @@ export default defineConfig({
     nav: [
       { text: "Home", link: "/" },
       { text: "Examples", link: "/markdown-examples" },
-      // {
-      //   text: `less-write`,
-      //   items: [
-      //     {
-      //       component: "RainbowAnimationSwitcher",
-      //       props: {
-      //         text: "Rainbow Animation",
-      //       },
-      //     },
-      //   ],
-      // },
+      {
+        text: `less-write`,
+        items: [
+          {
+            text: "Markdown Examples", link: "/markdown-examples"
+          },
+          {
+            component: "VPMenuRainbowAnimationSwitcher",
+            props: {
+              text: "Rainbow Animation",
+            },
+          },
+        ],
+      },
     ],
 
     sidebar: [
