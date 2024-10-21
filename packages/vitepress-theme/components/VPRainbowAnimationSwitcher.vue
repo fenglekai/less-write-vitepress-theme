@@ -2,7 +2,7 @@
 import { useLocalStorage, useMediaQuery } from "@vueuse/core";
 import { inBrowser } from "vitepress";
 import { computed, watch } from "vue";
-import RainbowSwitcher from "./RainbowSwitcher.vue";
+import VPRainbowSwitcher from "./VPRainbowSwitcher.vue";
 import VPIconPlay from "./icons/VPIconPlay.vue";
 import VPIconStop from "./icons/VPIconStop.vue";
 
@@ -43,15 +43,15 @@ const switchTitle = computed(() => {
         <p class="text">
           {{ text ?? "Rainbow Animation" }}
         </p>
-        <RainbowSwitcher
+        <VPRainbowSwitcher
           :title="switchTitle"
-          class="RainbowSwitcher"
+          class="VPRainbowSwitcher"
           :aria-checked="animated ? 'true' : 'false'"
           @click="toggleRainbow"
         >
           <VPIconPlay class="i-play:rainbow animated" />
           <VPIconStop class="i-stop:rainbow-off non-animated" />
-        </RainbowSwitcher>
+        </VPRainbowSwitcher>
       </div>
     </div>
 </template>
@@ -121,15 +121,15 @@ const switchTitle = computed(() => {
   opacity: 0;
 }
 
-.RainbowSwitcher[aria-checked="false"] .non-animated {
+.VPRainbowSwitcher[aria-checked="false"] .non-animated {
   opacity: 1;
 }
 
-.RainbowSwitcher[aria-checked="true"] .animated {
+.VPRainbowSwitcher[aria-checked="true"] .animated {
   opacity: 1;
 }
 
-.RainbowSwitcher[aria-checked="false"] :deep(.check) {
+.VPRainbowSwitcher[aria-checked="false"] :deep(.check) {
   /*rtl:ignore*/
   transform: translateX(18px);
 }

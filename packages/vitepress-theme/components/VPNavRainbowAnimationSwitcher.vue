@@ -2,7 +2,7 @@
 import { useLocalStorage, useMediaQuery } from "@vueuse/core";
 import { inBrowser } from "vitepress";
 import { computed, watch } from "vue";
-import RainbowSwitcher from "./RainbowSwitcher.vue";
+import VPRainbowSwitcher from "./VPRainbowSwitcher.vue";
 import VPIconPlay from "./icons/VPIconPlay.vue";
 import VPIconStop from "./icons/VPIconStop.vue";
 
@@ -38,27 +38,27 @@ const switchTitle = computed(() => {
 </script>
 
 <template>
-  <div class="RainbowAnimationSwitcherOnNav">
+  <div class="VPNavRainbowAnimationSwitcher">
     <div class="NavScreenRainbowAnimation">
-      <RainbowSwitcher
+      <VPRainbowSwitcher
         :title="switchTitle"
-        class="RainbowAnimationSwitcher"
+        class="VPRainbowAnimationSwitcher"
         :aria-checked="animated ? 'true' : 'false'"
         @click="toggleRainbow"
       >
         <VPIconPlay class="i-play:rainbow animated" />
         <VPIconStop class="i-stop:rainbow-off non-animated" />
-      </RainbowSwitcher>
+      </VPRainbowSwitcher>
     </div>
   </div>
 </template>
 
 <style scoped>
-.RainbowAnimationSwitcherOnNav {
+.VPNavRainbowAnimationSwitcher {
   display: none;
 }
 @media (min-width: 1280px) {
-  .RainbowAnimationSwitcherOnNav {
+  .VPNavRainbowAnimationSwitcher {
     display: flex;
     align-items: center;
   }
@@ -72,15 +72,15 @@ const switchTitle = computed(() => {
   opacity: 0;
 }
 
-.RainbowAnimationSwitcher[aria-checked="false"] .non-animated {
+.VPRainbowAnimationSwitcher[aria-checked="false"] .non-animated {
   opacity: 1;
 }
 
-.RainbowAnimationSwitcher[aria-checked="true"] .animated {
+.VPRainbowAnimationSwitcher[aria-checked="true"] .animated {
   opacity: 1;
 }
 
-.RainbowAnimationSwitcher[aria-checked="false"] :deep(.check) {
+.VPRainbowAnimationSwitcher[aria-checked="false"] :deep(.check) {
   /*rtl:ignore*/
   transform: translateX(18px);
 }

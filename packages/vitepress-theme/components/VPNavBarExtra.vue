@@ -4,7 +4,7 @@ import VPFlyout from "vitepress/dist/client/theme-default/components/VPFlyout.vu
 import VPMenuLink from "vitepress/dist/client/theme-default/components/VPMenuLink.vue";
 import VPSwitchAppearance from "vitepress/dist/client/theme-default/components/VPSwitchAppearance.vue";
 import VPSocialLinks from "vitepress/dist/client/theme-default/components/VPSocialLinks.vue";
-import RainbowAnimationSwitcher from "./RainbowAnimationSwitcher.vue";
+import VPRainbowAnimationSwitcher from "./VPRainbowAnimationSwitcher.vue";
 import { useData } from "vitepress";
 import { useLangs } from "vitepress/dist/client/theme-default/composables/langs";
 
@@ -36,7 +36,7 @@ const hasExtraContent = computed(
       </template>
     </div>
 
-    <RainbowAnimationSwitcher />
+    <VPRainbowAnimationSwitcher />
 
     <div
       v-if="

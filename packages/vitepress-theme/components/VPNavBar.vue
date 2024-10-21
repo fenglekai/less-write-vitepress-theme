@@ -11,7 +11,7 @@ import VPNavBarSearch from "vitepress/dist/client/theme-default/components/VPNav
 import VPNavBarSocialLinks from "vitepress/dist/client/theme-default/components/VPNavBarSocialLinks.vue";
 import VPNavBarTitle from "vitepress/dist/client/theme-default/components/VPNavBarTitle.vue";
 import VPNavBarTranslations from "vitepress/dist/client/theme-default/components/VPNavBarTranslations.vue";
-import RainbowAnimationSwitcherOnNav from "./RainbowAnimationSwitcherOnNav.vue";
+import VPNavRainbowAnimationSwitcher from "./VPNavRainbowAnimationSwitcher.vue";
 
 const props = defineProps<{
   isScreenOpen: boolean;
@@ -58,7 +58,7 @@ watchPostEffect(() => {
             <VPNavBarSearch class="search" />
             <VPNavBarMenu class="menu" />
             <VPNavBarTranslations class="translations" />
-            <RainbowAnimationSwitcherOnNav class="rainbow-animation" />
+            <VPNavRainbowAnimationSwitcher class="rainbow-animation" />
             <VPNavBarAppearance class="appearance" />
             <VPNavBarSocialLinks class="social-links" />
             <VPNavBarExtra class="extra" />

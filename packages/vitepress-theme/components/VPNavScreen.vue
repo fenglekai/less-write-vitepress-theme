@@ -6,7 +6,7 @@ import VPNavScreenAppearance from "vitepress/dist/client/theme-default/component
 import VPNavScreenMenu from "vitepress/dist/client/theme-default/components/VPNavScreenMenu.vue";
 import VPNavScreenSocialLinks from "vitepress/dist/client/theme-default/components/VPNavScreenSocialLinks.vue";
 import VPNavScreenTranslations from "vitepress/dist/client/theme-default/components/VPNavScreenTranslations.vue";
-import RainbowAnimationSwitcher from "./RainbowAnimationSwitcher.vue";
+import VPRainbowAnimationSwitcher from "./VPRainbowAnimationSwitcher.vue";
 
 defineProps<{
   open: boolean;
@@ -27,7 +27,7 @@ const isLocked = useScrollLock(inBrowser ? document.body : null);
         <slot name="nav-screen-content-before" />
         <VPNavScreenMenu class="menu" />
         <VPNavScreenTranslations class="translations" />
-        <RainbowAnimationSwitcher class="rainbow-animation" />
+        <VPRainbowAnimationSwitcher class="rainbow-animation" />
         <VPNavScreenAppearance class="appearance" />
         <VPNavScreenSocialLinks class="social-links" />
         <slot name="nav-screen-content-after" />
