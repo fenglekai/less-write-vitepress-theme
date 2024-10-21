@@ -5,7 +5,7 @@ import VPMenuLink from "vitepress/dist/client/theme-default/components/VPMenuLin
 import VPSwitchAppearance from "vitepress/dist/client/theme-default/components/VPSwitchAppearance.vue";
 import VPSocialLinks from "vitepress/dist/client/theme-default/components/VPSocialLinks.vue";
 import RainbowAnimationSwitcher from "./RainbowAnimationSwitcher.vue";
-import { useData } from "vitepress/dist/client/theme-default/composables/data";
+import { useData } from "vitepress";
 import { useLangs } from "vitepress/dist/client/theme-default/composables/langs";
 
 const { site, theme } = useData();

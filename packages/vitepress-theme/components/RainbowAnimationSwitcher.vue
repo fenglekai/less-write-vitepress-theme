@@ -38,7 +38,6 @@ const switchTitle = computed(() => {
 </script>
 
 <template>
-  <ClientOnly>
     <div class="group" :class="{ mobile: screenMenu }">
       <div class="NavScreenRainbowAnimation">
         <p class="text">
@@ -55,13 +54,12 @@ const switchTitle = computed(() => {
         </RainbowSwitcher>
       </div>
     </div>
-  </ClientOnly>
 </template>
 
 <style scoped>
 .group {
-  border-top: 1px solid var(--vp-c-divider);
-  padding-top: 10px;
+  /* border-top: 1px solid var(--vp-c-divider); */
+  /* padding-top: 10px; */
   margin-top: 1rem !important;
 }
 
@@ -79,10 +77,22 @@ const switchTitle = computed(() => {
   background-color: var(--vp-c-bg);
 }
 
+@media (min-width: 768px) {
+  .group {
+    border-top: none;
+    margin-top: 0!important;
+    padding-top: 0;
+  }
+  .NavScreenRainbowAnimation {
+    padding: 0!important;
+    background-color: transparent!important;
+  }
+}
+
 @media (min-width: 960px) {
   .group:not(.mobile) {
-    margin-top: 10px !important;
-    margin-bottom: -10px;
+    /* margin-top: 10px !important; */
+    /* margin-bottom: -10px; */
     padding-top: 0;
     width: 220px;
   }
@@ -94,8 +104,7 @@ const switchTitle = computed(() => {
   align-items: center;
   border-radius: 8px;
   padding: 12px 12px 12px 12px;
-  background-color: var(--vp-c-bg-elv);
-  max-width: 220px;
+  background-color: var(--vp-c-bg-soft);
 }
 .group.mobile .NavScreenRainbowAnimation {
   max-width: unset;
