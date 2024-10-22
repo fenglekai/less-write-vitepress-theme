@@ -107,7 +107,7 @@ const buildFullBundle: TaskFunction = series(
     withTaskName("buildModules", buildModules)
   ),
   withTaskName("copyBuildStylesFile", copyBuildStylesFile),
-  withTaskName("clean", () => rimraf(path.resolve(buildOutput, "styles")))
+  withTaskName("cleanBuildStyles", () => rimraf(path.resolve(buildOutput, "styles")))
 );
 
 export default buildFullBundle;

@@ -67,9 +67,9 @@ jobs:
           token: ${{ github.token }}
           body_path: RELEASE.md
 
-      # - name: Release to NPM
-      #   if: ${{ github.event_name != 'workflow_dispatch' }}
-      #   run: |
-      #     gh workflow run publish-npm.yml --ref ${{ github.ref }}
-      #   env:
-      #     GH_TOKEN: ${{ github.token }}
+      - name: Release to NPM
+        if: ${{ github.event_name != 'workflow_dispatch' }}
+        run: |
+          gh workflow run publish-npm.yml --ref ${{ github.ref }}
+        env:
+          GH_TOKEN: ${{ github.token }}
