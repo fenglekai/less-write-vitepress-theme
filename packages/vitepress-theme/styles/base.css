@@ -12,6 +12,9 @@
 .link:hover {
   color: var(--vp-c-brand-1);
 }
+.pager-link:hover {
+  border: 1px solid var(--vp-c-brand-1) !important;
+}
 .VPFeature:hover {
   border: 1px solid var(--vp-c-brand-1) !important;
 }

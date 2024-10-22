@@ -127,15 +127,13 @@ const on = {
     <div class="example">
       <VPExample :file="path" :demo="formatPathDemos[path]" />
 
-      <!-- <ElDivider class="m-0" /> -->
-
       <div class="op-btns">
         <button
           ref="sourceCodeRef"
           :aria-label="
             sourceVisible ? locale['hide-source'] : locale['view-source']
           "
-          class="reset-btn el-icon op-btn"
+          class="reset-btn op-btn"
           @click="toggleSourceVisible()"
         >
           <VPIconCode width="16" />
@@ -166,7 +164,7 @@ const on = {
 <style scoped>
 .example {
   border: 1px solid var(--vp-c-divider);
-  border-radius: var(--le-border-radius-base);
+  border-radius: 4px;
 }
 .op-btns {
   padding: 0.5rem;
@@ -175,24 +173,17 @@ const on = {
   justify-content: flex-end;
   height: 2.5rem;
   border-top: 1px solid var(--vp-c-divider);
+}
 
-  .icon:hover {
-    color: var(--text-color);
-  }
+.op-btns .op-btn {
+  margin: 0 0.5rem;
+  cursor: pointer;
+  color: var(--vp-c-text-2);
+  transition: 0.2s;
+}
 
-  .op-btn {
-    margin: 0 0.5rem;
-    cursor: pointer;
-    color: var(--text-color-lighter);
-    transition: 0.2s;
-  }
-  .op-btn.github a {
-    transition: 0.2s;
-    color: var(--text-color-lighter);
-  }
-  .op-btn.github a:hover {
-    color: var(--text-color);
-  }
+.op-btns .op-btn:hover {
+  color: var(--vp-c-brand-1);
 }
 
 .example-float-control {
@@ -219,13 +210,12 @@ const on = {
   }
 }
 .example-float-control:hover {
-  color: var(--le-color-primary);
+  color: var(--vp-c-brand-1);
 }
 
-@transition-duration: 0.3s;
 .v-enter-active,
 .v-leave-active {
-  transition: opacity @transition-duration ease;
+  transition: opacity 0.3s ease;
 }
 
 .v-enter-from,
@@ -234,15 +224,15 @@ const on = {
 }
 
 .collapse-transition {
-  transition: @transition-duration height ease-in-out,
-    @transition-duration padding-top ease-in-out,
-    @transition-duration padding-bottom ease-in-out;
+  transition: 0.3s height ease-in-out,
+    0.3s padding-top ease-in-out,
+    0.3s padding-bottom ease-in-out;
 }
 
 .collapse-transition-leave-active,
 .collapse-transition-enter-active {
-  transition: @transition-duration max-height ease-in-out,
-    @transition-duration padding-top ease-in-out,
-    @transition-duration padding-bottom ease-in-out;
+  transition: 0.3s max-height ease-in-out,
+    0.3s padding-top ease-in-out,
+    0.3s padding-bottom ease-in-out;
 }
 </style>
