@@ -6,6 +6,6 @@
     "composite": true,
     "skipLibCheck": true,
   },
-  "include": ["packages/vitepress-theme/**/*", "build/*", "package.json"],
+  "include": ["packages/vitepress-theme/**/*", "build/*"],
   "exclude": ["node_modules"]
 }

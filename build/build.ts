@@ -10,6 +10,7 @@ import postcss from "rollup-plugin-postcss";
 import gulpPostcss from "gulp-postcss";
 import cssnano from "cssnano";
 import { glob } from "fast-glob";
+import { rimraf } from "rimraf";
 import {
   writeBundles,
   withTaskName,
@@ -105,7 +106,8 @@ const buildFullBundle: TaskFunction = series(
     withTaskName("buildStyles", buildStyles),
     withTaskName("buildModules", buildModules)
   ),
-  withTaskName("copyBuildStylesFile", copyBuildStylesFile)
+  withTaskName("copyBuildStylesFile", copyBuildStylesFile),
+  withTaskName("clean", () => rimraf(path.resolve(buildOutput, "styles")))
 );
 
 export default buildFullBundle;

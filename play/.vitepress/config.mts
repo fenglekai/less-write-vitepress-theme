@@ -12,6 +12,7 @@ export default defineConfig({
   }),
   title: "Less Write Theme",
   description: "A Vitepress Theme",
+  base: "/less-write-vitepress-theme/",
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
     nav: [

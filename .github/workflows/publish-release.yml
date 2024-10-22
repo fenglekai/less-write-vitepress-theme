@@ -1,0 +1,75 @@
+name: Publish to Github release
+
+on:
+  push:
+    tags:
+      - "v*"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  id-token: write
+  actions: write
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref }}
+          fetch-depth: 0
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: pnpm
+
+      - name: Cache node modules
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.pnpm-store
+            ./node_modules
+          key: ${{ runner.os }}-pnpm-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-
+
+      - name: Generate Changelog
+        run: |
+          pnpm add -g less-write-changelog
+          less-write-changelog
+
+      - name: Commit and push changelog
+        if: ${{ github.event_name != 'workflow_dispatch' }}
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add CHANGELOG.md
+          git commit -m "docs(CHANGELOG): update changelog [skip ci]"
+          git push origin HEAD:main
+
+      - name: Release to Github
+        uses: softprops/action-gh-release@v2
+        with:
+          token: ${{ github.token }}
+          body_path: RELEASE.md
+
+      # - name: Release to NPM
+      #   if: ${{ github.event_name != 'workflow_dispatch' }}
+      #   run: |
+      #     gh workflow run publish-npm.yml --ref ${{ github.ref }}
+      #   env:
+      #     GH_TOKEN: ${{ github.token }}
