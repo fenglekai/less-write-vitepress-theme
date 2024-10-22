@@ -1,6 +1,7 @@
 {
   "name": "less-write-vitepress-theme",
   "version": "1.0.0",
+  "packageManager": "pnpm@9.6.0",
   "description": "Vitepress custom theme",
   "main": "lib/config.js",
   "module": "es/config.mjs",
