@@ -1,9 +1,10 @@
-import { series, TaskFunction } from "gulp";
+import { parallel, series, TaskFunction } from "gulp";
 import { copyFile, mkdir } from "fs/promises";
 import path from "path";
 import { withTaskName, run } from "./utils";
 import buildFullBundle from "./build";
 import { buildOutput, projRoot } from "./constants";
+import { generateTypesDefinitions } from "./gen-types";
 
 export const copyFiles = () =>
   Promise.all([
@@ -26,6 +27,11 @@ export default series(
   withTaskName("createOutput", () =>
     mkdir(path.resolve(buildOutput), { recursive: true })
   ),
-  withTaskName("buildFullBundle", buildFullBundle),
+
+  parallel(
+    withTaskName("buildFullBundle", buildFullBundle),
+    withTaskName("generateTypesDefinitions", generateTypesDefinitions)
+  ),
+
   withTaskName("copyFile", copyFiles)
 ) as TaskFunction;

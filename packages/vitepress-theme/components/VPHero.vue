@@ -1,7 +1,11 @@
 <script setup lang="ts">
 import { type Ref, inject } from "vue";
-import type { DefaultTheme } from "vitepress/theme";
 import { VPButton, VPImage } from "vitepress/theme";
+
+export type ThemeableImage =
+    | string
+    | { src: string; alt?: string; [prop: string]: any }
+    | { light: string; dark: string; alt?: string; [prop: string]: any }
 
 export interface HeroAction {
   theme?: "brand" | "alt";
@@ -15,7 +19,7 @@ defineProps<{
   name?: string;
   text?: string;
   tagline?: string;
-  image?: DefaultTheme.ThemeableImage;
+  image?: ThemeableImage;
   actions?: HeroAction[];
 }>();
 

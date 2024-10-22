@@ -1,24 +1,6 @@
 {
-  "compilerOptions": {
-    "outDir": "dist",
-    "target": "ESNext",
-    "module": "ESNext",
-    "lib": ["ESNext", "DOM"],
-    "baseUrl": ".",
-    "sourceMap": false,
-    "moduleResolution": "node",
-    "allowJs": false,
-    "strict": true,
-    "noUnusedLocals": true,
-    "resolveJsonModule": true,
-    "allowSyntheticDefaultImports": true,
-    "esModuleInterop": true,
-    "removeComments": false,
-    "rootDir": ".",
-    "types": ["unplugin-vue-macros/macros-global", "node"],
-    "composite": true,
-    "skipLibCheck": true,
-  },
-  "include": ["packages/vitepress-theme/**/*", "build/*", "package.json"],
-  "exclude": ["node_modules"]
+  "references": [
+    { "path": "./tsconfig.dev.json" },
+    { "path": "./tsconfig.build.json" },
+  ]
 }

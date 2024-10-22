@@ -18,7 +18,7 @@ const mergeConfig = (config: Config) => {
 export default (config: Config): UserConfig => {
   const { docRoot, rainbowAnimation } = mergeConfig(config);
 
-  const alias = [];
+  const alias: any[] = [];
   if (rainbowAnimation) {
     alias.push({
       find: /^.*\/VPNavScreen\.vue$/,

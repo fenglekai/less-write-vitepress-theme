@@ -1,0 +1,11 @@
+{
+  "extends": "./tsconfig.base.json",
+  "compilerOptions": {
+    "lib": ["ESNext", "DOM"],
+    "types": ["unplugin-vue-macros/macros-global", "node"],
+    "composite": true,
+    "skipLibCheck": true,
+  },
+  "include": ["packages/vitepress-theme/**/*", "build/*", "package.json"],
+  "exclude": ["node_modules"]
+}

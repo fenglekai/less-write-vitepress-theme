@@ -3,6 +3,7 @@
     "composables",
     "consola",
     "cssnano",
+    "Themeable",
     "unplugin",
     "Vinly",
     "vitepress",

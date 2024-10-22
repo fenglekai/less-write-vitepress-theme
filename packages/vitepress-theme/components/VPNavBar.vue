@@ -4,7 +4,6 @@ import { ref, watchPostEffect } from "vue";
 import { useData } from "vitepress";
 import { useSidebar } from "vitepress/dist/client/theme-default/composables/sidebar";
 import VPNavBarAppearance from "vitepress/dist/client/theme-default/components/VPNavBarAppearance.vue";
-import VPNavBarExtra from "vitepress/dist/client/theme-default/components/VPNavBarExtra.vue";
 import VPNavBarHamburger from "vitepress/dist/client/theme-default/components/VPNavBarHamburger.vue";
 import VPNavBarMenu from "vitepress/dist/client/theme-default/components/VPNavBarMenu.vue";
 import VPNavBarSearch from "vitepress/dist/client/theme-default/components/VPNavBarSearch.vue";
@@ -12,6 +11,7 @@ import VPNavBarSocialLinks from "vitepress/dist/client/theme-default/components/
 import VPNavBarTitle from "vitepress/dist/client/theme-default/components/VPNavBarTitle.vue";
 import VPNavBarTranslations from "vitepress/dist/client/theme-default/components/VPNavBarTranslations.vue";
 import VPNavRainbowAnimationSwitcher from "./VPNavRainbowAnimationSwitcher.vue";
+import VPNavBarExtra from "./VPNavBarExtra.vue";
 
 const props = defineProps<{
   isScreenOpen: boolean;

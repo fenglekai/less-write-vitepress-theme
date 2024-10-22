@@ -1,11 +1,11 @@
 import path from "path";
 import fs from "fs";
 import type { Plugin } from "vitepress";
-import glob from "fast-glob";
+// import glob from "fast-glob";
 import consola from "consola";
 
 type Append = Record<"headers" | "footers" | "scriptSetups", string[]>;
-let compPaths: string[];
+// let compPaths: string[];
 export function MarkdownTransform(docRoot: string): Plugin {
   const componentRoot = path.resolve(docRoot, "component");
   if (!fs.existsSync(componentRoot)) {
@@ -18,15 +18,15 @@ export function MarkdownTransform(docRoot: string): Plugin {
 
     enforce: "pre",
 
-    async buildStart() {
-      const pattern = fs.readdirSync(componentRoot);
+    // async buildStart() {
+    //   const pattern = fs.readdirSync(componentRoot);
 
-      compPaths = await glob(pattern, {
-        cwd: docRoot,
-        absolute: true,
-        onlyDirectories: true,
-      });
-    },
+    //   compPaths = await glob(pattern, {
+    //     cwd: docRoot,
+    //     absolute: true,
+    //     onlyDirectories: true,
+    //   });
+    // },
 
     async transform(code, id) {
       if (!id.endsWith(".md")) return;
