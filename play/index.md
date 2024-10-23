@@ -6,6 +6,9 @@ hero:
   name: "Less Write Theme"
   text: "基于VitePress的主题"
   tagline: 来源于Element Plus、UnoCSS的灵感
+  image:
+    src: https://fenglekai.github.io/less-write/less-write-logo.png
+    alt: LessWrite
   actions:
     - theme: brand
       text: 快速开始

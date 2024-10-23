@@ -15,8 +15,10 @@ export default defineConfig({
   title: "Less Write Theme",
   description: "A Vitepress Theme",
   base: "/less-write-vitepress-theme/",
+  head: [["link", { rel: "icon", href: "https://fenglekai.github.io/less-write/favicon.ico" }]],
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
+    logo: "https://fenglekai.github.io/less-write/logo.jpeg",
     nav: [
       { text: "首页", link: "/" },
       { text: "指南", link: "/guide" },

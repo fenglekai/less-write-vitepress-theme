@@ -35,6 +35,11 @@ export default defineConfig({
     // 你的文档目录
     docRoot: path.resolve(__dirname, ".."),
   }),
+  vite: {
+    // 防止列出的依赖项在服务端渲染（SSR）时被外部化 https://github.com/vuejs/vitepress/issues/1465
+    ssr: { noExternal: ["less-write-vitepress-theme"] },
+    // ...
+  }
   // ...
 });
 ```
