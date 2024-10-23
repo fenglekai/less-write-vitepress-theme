@@ -27,7 +27,7 @@ $ pnpm add less-write-vitepress-theme
 // .vitepress/config.mts
 import { defineConfig } from "vitepress";
 import path from "path";
-import Config from "less-write-vitepress-theme/config";
+import Config from "less-write-vitepress-theme";
 
 
 export default defineConfig({
@@ -42,7 +42,7 @@ export default defineConfig({
 ```ts
 // .vitepress/theme/index.ts
 import type { Theme } from "vitepress";
-import CustomTheme from "less-write-vitepress-theme/theme";
+import CustomTheme from "less-write-vitepress-theme/es/theme";
 
 export default {
   extends: CustomTheme,

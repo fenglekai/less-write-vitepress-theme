@@ -3,7 +3,7 @@ import type { Theme } from "vitepress";
 // dev
 import CustomTheme from "../../../packages/vitepress-theme/theme";
 // preview
-// import CustomTheme from "less-write-vitepress-theme/theme";
+// import CustomTheme from "less-write-vitepress-theme/es/theme";
 // import CustomTheme from "../../../dist/es/theme.mjs";
 
 export default {
