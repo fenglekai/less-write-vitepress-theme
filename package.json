@@ -57,7 +57,10 @@
   "keywords": [
     "vitepress",
     "vue",
-    "theme"
+    "theme",
+    "unocss",
+    "element-plus",
+    "vitepress-theme"
   ],
   "author": "fenglekai",
   "license": "MIT",
