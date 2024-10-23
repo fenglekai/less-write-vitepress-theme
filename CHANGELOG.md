@@ -1,3 +1,17 @@
+## [1.0.2](https://github.com/fenglekai/less-write-vitepress-theme/compare/v1.0.1...v1.0.2) (2024-10-23)
+
+### 📝 Documentation | 文档
+
+* **CHANGELOG:** update changelog [skip ci] ([github-actions[bot]](https://github.com/fenglekai/less-write-vitepress-theme/commit/61defea9797f5856ef534677d9023a7d94766484))
+
+### 🔨 Choreographic Tasks | 构建/工具的变动
+
+* 🤖 将声明文件拷贝到es/lib对应目录中 ([fenglekai](https://github.com/fenglekai/less-write-vitepress-theme/commit/c5f8aeb4e8dee28cab97cb9f3f208e00b6d028de))
+
+### 🌈 Commits | 其他提交
+
+* 1.0.2 ([fenglekai](https://github.com/fenglekai/less-write-vitepress-theme/commit/a5b399b59bca0735a468c476dac501769bb89cb0))
+
 ## [1.0.1](https://github.com/fenglekai/less-write-vitepress-theme/compare/v1.0.0...v1.0.1) (2024-10-23)
 
 ### ♻ Code Refactoring | 代码重构
