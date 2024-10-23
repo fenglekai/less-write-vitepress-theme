@@ -1,3 +1,21 @@
+## [1.0.1](https://github.com/fenglekai/less-write-vitepress-theme/compare/v1.0.0...v1.0.1) (2024-10-23)
+
+### ♻ Code Refactoring | 代码重构
+
+* 💡 package type => module;__dirname => import.meta.url ([fenglekai](https://github.com/fenglekai/less-write-vitepress-theme/commit/6b8932138f74adcec4efcee87ed396a063d302a0))
+
+### 📝 Documentation | 文档
+
+* **CHANGELOG:** update changelog [skip ci] ([github-actions[bot]](https://github.com/fenglekai/less-write-vitepress-theme/commit/4cf3c9c3c95d52e074683107598edecff9cf3044))
+
+### 🔧 Continuous Integration | CI 配置
+
+* 🎡 新增npm构建发布 ([fenglekai](https://github.com/fenglekai/less-write-vitepress-theme/commit/1547a5ff7217f34ad8cf06bf8789f5bdab6bd725))
+
+### 🌈 Commits | 其他提交
+
+* 1.0.1 ([fenglekai](https://github.com/fenglekai/less-write-vitepress-theme/commit/9dc76d8394a1748fd6bc1458fef6182bbefd71c0))
+
 # [1.0.0](https://github.com/fenglekai/less-write-vitepress-theme/compare/771ba882d9430ec8bb12cfa1b66e637a8b02a68c...v1.0.0) (2024-10-22)
 
 ### ♻ Code Refactoring | 代码重构
