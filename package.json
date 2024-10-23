@@ -3,8 +3,10 @@
   "version": "1.0.0",
   "packageManager": "pnpm@9.6.0",
   "description": "Vitepress custom theme",
+  "type": "module",
   "main": "lib/config.js",
   "module": "es/config.mjs",
+  "types": "types/config.d.ts",
   "exports": {
     ".": {
       "types": "./types/config.d.ts",
@@ -26,7 +28,7 @@
     "./es/*": {
       "types": [
         "./types/*.d.ts",
-        "./types/*/config.d.ts"
+        "./types/*/*.d.ts"
       ],
       "import": "./es/*.mjs"
     },
@@ -37,9 +39,14 @@
     "./lib/*": {
       "types": [
         "./types/*.d.ts",
-        "./types/*/config.d.ts"
+        "./types/*/*.d.ts"
       ],
       "require": "./lib/*.js"
+    },
+    "./theme": {
+      "types": "./types/theme.d.ts",
+      "import": "./es/theme.mjs",
+      "require": "./lib/theme.js"
     },
     "./*": "./*"
   },

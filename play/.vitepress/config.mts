@@ -1,14 +1,16 @@
 import { defineConfig } from "vitepress";
 import path from "path";
+import { fileURLToPath } from "url";
 // dev
 import Config from "../../packages/vitepress-theme/config";
 // preview
+// import Config from "less-write-vitepress-theme";
 // import Config from "../../dist/es/config.mjs";
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
   extends: Config({
-    docRoot: path.resolve(__dirname, ".."),
+    docRoot: path.resolve(path.dirname(fileURLToPath(import.meta.url)), ".."),
   }),
   title: "Less Write Theme",
   description: "A Vitepress Theme",

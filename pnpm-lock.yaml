@@ -126,9 +126,9 @@ importers:
 
   play:
     dependencies:
-      '@less-write/vitepress-theme':
-        specifier: workspace:*
-        version: link:../packages/vitepress-theme
+      less-write-vitepress-theme:
+        specifier: npm:less-write-vitepress-theme@latest
+        version: 1.0.0(vitepress@1.4.1(@algolia/client-search@4.24.0)(@types/node@22.7.6)(less@4.2.0)(postcss@8.4.47)(search-insights@2.17.2)(typescript@5.6.3))(vue@3.5.12(typescript@5.6.3))
       vue:
         specifier: ^3.5.12
         version: 3.5.12(typescript@5.6.3)
@@ -1889,6 +1889,12 @@ packages:
   lead@4.0.0:
     resolution: {integrity: sha512-DpMa59o5uGUWWjruMp71e6knmwKU3jRBBn1kjuLWN9EeIOxNeSAwvHf03WIl8g/ZMR2oSQC9ej3yeLBwdDc/pg==}
     engines: {node: '>=10.13.0'}
+
+  less-write-vitepress-theme@1.0.0:
+    resolution: {integrity: sha512-yG7ytnjm3N7d6gskWc5IVpbxw1+KlZQDVTnhmHL8bSCueek0XPKUINPWKsqzmd3lRYP/EM/1PSb3UecJhnN6Ow==}
+    peerDependencies:
+      vitepress: ^1.4.1
+      vue: ^3.5.12
 
   less@4.2.0:
     resolution: {integrity: sha512-P3b3HJDBtSzsXUl0im2L7gTO5Ubg8mEN6G8qoTS77iXxXX4Hvu4Qj540PZDvQ8V6DmX6iXo98k7Md0Cm1PrLaA==}
@@ -4960,6 +4966,18 @@ snapshots:
   last-run@2.0.0: {}
 
   lead@4.0.0: {}
+
+  less-write-vitepress-theme@1.0.0(vitepress@1.4.1(@algolia/client-search@4.24.0)(@types/node@22.7.6)(less@4.2.0)(postcss@8.4.47)(search-insights@2.17.2)(typescript@5.6.3))(vue@3.5.12(typescript@5.6.3)):
+    dependencies:
+      '@vueuse/core': 11.1.0(vue@3.5.12(typescript@5.6.3))
+      consola: 3.2.3
+      fast-glob: 3.3.2
+      markdown-it: 14.1.0
+      markdown-it-container: 4.0.0
+      vitepress: 1.4.1(@algolia/client-search@4.24.0)(@types/node@22.7.6)(less@4.2.0)(postcss@8.4.47)(search-insights@2.17.2)(typescript@5.6.3)
+      vue: 3.5.12(typescript@5.6.3)
+    transitivePeerDependencies:
+      - '@vue/composition-api'
 
   less@4.2.0:
     dependencies:

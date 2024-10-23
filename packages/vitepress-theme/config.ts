@@ -7,7 +7,7 @@ export type Config = { docRoot?: string; rainbowAnimation?: boolean };
 
 const mergeConfig = (config: Config) => {
   let defaultConfig = {
-    docRoot: path.resolve(__dirname),
+    docRoot: path.dirname(fileURLToPath(import.meta.url)),
     rainbowAnimation: true,
   };
   const merge = { ...defaultConfig, ...config };
