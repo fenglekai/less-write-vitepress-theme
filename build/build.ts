@@ -84,7 +84,6 @@ const buildModules = async () => {
       preserveModules: true,
       preserveModulesRoot: moduleRoot,
       entryFileNames: `[name].js`,
-      assetFileNames: `styles`,
     },
   ]);
 };

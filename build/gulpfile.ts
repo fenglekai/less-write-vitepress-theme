@@ -1,4 +1,4 @@
-import { parallel, series, TaskFunction } from "gulp";
+import { dest, parallel, series, src, TaskFunction } from "gulp";
 import { copyFile, mkdir } from "fs/promises";
 import path from "path";
 import { withTaskName, run } from "./utils";
@@ -6,7 +6,7 @@ import buildFullBundle from "./build";
 import { buildOutput, projRoot } from "./constants";
 import { generateTypesDefinitions } from "./gen-types";
 
-export const copyFiles = () =>
+const copyFiles = () =>
   Promise.all([
     copyFile(
       path.resolve(projRoot, "package.json"),
@@ -22,6 +22,17 @@ export const copyFiles = () =>
     ),
   ]);
 
+const copyTypesFile = () => {
+  return src(path.resolve(buildOutput, "types/**/*"))
+    .pipe(dest(path.resolve(buildOutput, "lib")))
+    .pipe(
+      dest((file) => {
+        file.extname.replace(".ts", ".mts");
+        return path.resolve(buildOutput, "es");
+      })
+    );
+};
+
 export default series(
   withTaskName("clean", () => run("pnpm run clean")),
   withTaskName("createOutput", () =>
@@ -32,6 +43,7 @@ export default series(
     withTaskName("buildFullBundle", buildFullBundle),
     withTaskName("generateTypesDefinitions", generateTypesDefinitions)
   ),
+  withTaskName("copyTypesFile", copyTypesFile),
 
   withTaskName("copyFile", copyFiles)
 ) as TaskFunction;
