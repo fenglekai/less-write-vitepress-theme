@@ -193,7 +193,7 @@ const on = {
   border-top: 1px solid var(--vp-c-divider);
   height: 44px;
   box-sizing: border-box;
-  background-color: var(--bg-color, #fff);
+  background-color: var(--bg-color);
   border-bottom-left-radius: 4px;
   border-bottom-right-radius: 4px;
   margin-top: -1px;
@@ -215,7 +215,7 @@ const on = {
 
 .v-enter-active,
 .v-leave-active {
-  transition: opacity 0.3s ease;
+  transition: opacity 0.2s ease;
 }
 
 .v-enter-from,
