@@ -193,7 +193,7 @@ const on = {
   border-top: 1px solid var(--vp-c-divider);
   height: 44px;
   box-sizing: border-box;
-  background-color: var(--bg-color);
+  background-color: var(--vp-c-bg);
   border-bottom-left-radius: 4px;
   border-bottom-right-radius: 4px;
   margin-top: -1px;
