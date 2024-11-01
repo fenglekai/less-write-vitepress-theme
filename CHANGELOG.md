@@ -1,3 +1,26 @@
+## [1.0.3](https://github.com/fenglekai/less-write-vitepress-theme/compare/v1.0.2...v1.0.3) (2024-11-01)
+
+### ✨ Features | 新功能
+
+* 🎸 新增站点图标;更新安装说明,需要ssr.noExternal ([fenglekai](https://github.com/fenglekai/less-write-vitepress-theme/commit/ff4dcd6be84c407ef5c25edf05819568347310e0))
+
+### 🐛 Bug Fixes | Bug 修复
+
+* 🐛 修复Demo组件在黑暗模式下背景色的问题 ([fenglekai](https://github.com/fenglekai/less-write-vitepress-theme/commit/f723799301aadb61972365911f23f66482587c43))
+
+### 💄 Styles | 风格
+
+* 💄 添加keywords关键词 ([fenglekai](https://github.com/fenglekai/less-write-vitepress-theme/commit/6e251438e738d949aa3fa6107c29ba70c58f3767))
+
+### 📝 Documentation | 文档
+
+* ✏️ 更新导入主题路径 ([fenglekai](https://github.com/fenglekai/less-write-vitepress-theme/commit/bdde705ff1941a061e63523882b9f2d368193044))
+* **CHANGELOG:** update changelog [skip ci] ([github-actions[bot]](https://github.com/fenglekai/less-write-vitepress-theme/commit/216886ac93f95d23bbe62e2fac302f6056cee4fb))
+
+### 🌈 Commits | 其他提交
+
+* 1.0.3 ([fenglekai](https://github.com/fenglekai/less-write-vitepress-theme/commit/88da380082decaf4974a08856ecee241de7def1f))
+
 ## [1.0.2](https://github.com/fenglekai/less-write-vitepress-theme/compare/v1.0.1...v1.0.2) (2024-10-23)
 
 ### 📝 Documentation | 文档
